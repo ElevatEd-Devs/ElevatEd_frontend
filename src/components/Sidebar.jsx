@@ -1,10 +1,10 @@
 import React from "react";
 
-const Sidebar = ({ show }) => {
+const Sidebar = ({showSidebar, setShowSidebar}) => {
   return (
-    <div className={show ? "" : "hidden"}>
+    <div >
       {/* // <!-- Navigation Toggle --> */}
-      <div className="lg:hidden py-16 text-center">
+      <div className={showSidebar ? "hidden" : "lg py-16 text-center"} >
         <button
           type="button"
           className="py-2 px-3 inline-flex justify-center items-center gap-x-2 text-start bg-gray-800 border border-gray-800 text-white text-sm font-medium rounded-lg shadow-2xs align-middle hover:bg-gray-950 focus:outline-hidden focus:bg-gray-900 dark:bg-white dark:text-neutral-800 dark:hover:bg-neutral-200 dark:focus:bg-neutral-200"
@@ -13,6 +13,7 @@ const Sidebar = ({ show }) => {
           aria-controls="hs-sidebar-mini-sidebar"
           aria-label="Toggle navigation"
           data-hs-overlay="#hs-sidebar-mini-sidebar"
+          onClick={()=>setShowSidebar(true)}
         >
           Open
         </button>
@@ -22,15 +23,15 @@ const Sidebar = ({ show }) => {
       {/* // <!-- Sidebar --> */}
       <div
         id="hs-sidebar-mini-sidebar"
-        className="hs-overlay [--auto-close:lg] lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 w-20
+        className={showSidebar ? `hs-overlay [--auto-close:lg] lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 w-20
 hs-overlay-open:translate-x-0
 -translate-x-full transition-all duration-300 transform
 h-full
 hidden
 fixed top-0 start-0 bottom-0 z-60
-bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700"
+bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700` : "hidden"}
         role="dialog"
-        tabindex="-1"
+        tabIndex="-1"
         aria-label="Sidebar"
       >
         <div className="relative flex flex-col h-full max-h-full ">
@@ -58,7 +59,7 @@ bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700"
             </a>
             {/* <!-- End Logo --> */}
 
-            <div className="lg:hidden absolute top-1 -end-3">
+            <div className="lg absolute top-1 -end-3">
               {/* <!-- Close Button --> */}
               <button
                 type="button"
@@ -66,16 +67,17 @@ bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700"
                 data-hs-overlay="#hs-sidebar-mini-sidebar"
               >
                 <svg
-                  classNameName="shrink-0 size-4"
+                  className="shrink-0 size-4"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  onClick={()=>setShowSidebar(false)}
                 >
                   <path d="M18 6 6 18" />
                   <path d="m6 6 12 12" />
@@ -104,9 +106,9 @@ bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
                     <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                     <polyline points="9 22 9 12 15 12 15 22" />
@@ -135,9 +137,9 @@ bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                     <circle cx="9" cy="7" r="4" />
@@ -168,9 +170,9 @@ bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
                     <circle cx="18" cy="15" r="3" />
                     <circle cx="9" cy="7" r="4" />
@@ -208,9 +210,9 @@ bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
                     <path d="M15.5 2H8.6c-.4 0-.8.2-1.1.5-.3.3-.5.7-.5 1.1v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8c.4 0 .8-.2 1.1-.5.3-.3.5-.7.5-1.1V6.5L15.5 2z" />
                     <path d="M3 7.6v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8" />
@@ -240,9 +242,9 @@ bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
                     <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
                     <line x1="16" x2="16" y1="2" y2="6" />
@@ -279,9 +281,9 @@ bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
                     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
                     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />

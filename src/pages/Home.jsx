@@ -6,26 +6,15 @@ import { useState } from "react";
 
 const Home = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+
   return (
     <div id="home-container" className="flex row">
       <div className="sidebar-container">
-        <button
-          onClick={() => {
-            setShowSidebar(() => !showSidebar);
-          }}
-        >
-          Button
-        </button>
-        <Sidebar show={showSidebar} />
+        <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       </div>
       <div
         id="card-container"
         className="flex row flex-wrap gap-4 items-center justify-between mx-auto p-4"
-        // onClick={() => {
-        //   if (showSidebar === true) {
-        //     setShowSidebar(() => !showSidebar);
-        //   }
-        // }}
       >
         <Card />
         <Card />
@@ -37,11 +26,6 @@ const Home = () => {
       <div
         id="event-container"
         className=""
-        onClick={() => {
-          if (showSidebar === true) {
-            setShowSidebar(() => !showSidebar);
-          }
-        }}
       >
         <Events /> {/* Events  and To do */}
       </div>
