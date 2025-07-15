@@ -3,6 +3,9 @@ import Card from "../components/Card";
 import Events from "../components/Events";
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
+import WeeklyEventCard from "../components/WeeklyEventCard";
+import AccordionContainer from "../components/AccordionContainer";
+import GradeSnapshot from "../components/GradeSnapshot";
 
 const Home = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -22,11 +25,11 @@ const Home = () => {
         <Card />
         <Card />
         <Card />
+        <WeeklyEventCard />
+        <AccordionContainer />
+        <GradeSnapshot />
       </div>
-      <div
-        id="event-container"
-        className=""
-      >
+      <div id="event-container" className="">
         <Events /> {/* Events  and To do */}
       </div>
       {/* </div> */}
