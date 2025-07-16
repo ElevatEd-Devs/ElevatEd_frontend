@@ -31,6 +31,38 @@ export default function WeeklyEventCard() {
           >
             Wed
           </button>
+          <button
+            className={`px-4 py-2 text-white font-semibold border-b-4 border-blue-700 hover:bg-blue-700 focus:outline-none tab-button ${
+              activeTab === "tab3" ? "active" : ""
+            }`}
+            onClick={() => setActiveTab("tab3")}
+          >
+            Thur
+          </button>
+          <button
+            className={`px-4 py-2 text-white font-semibold border-b-4 border-blue-700 hover:bg-blue-700 focus:outline-none tab-button ${
+              activeTab === "tab3" ? "active" : ""
+            }`}
+            onClick={() => setActiveTab("tab3")}
+          >
+            Fri
+          </button>
+          <button
+            className={`px-4 py-2 text-white font-semibold border-b-4 border-blue-700 hover:bg-blue-700 focus:outline-none tab-button ${
+              activeTab === "tab3" ? "active" : ""
+            }`}
+            onClick={() => setActiveTab("tab3")}
+          >
+            Sat
+          </button>
+          <button
+            className={`px-4 py-2 text-white font-semibold border-b-4 border-blue-700 hover:bg-blue-700 focus:outline-none tab-button ${
+              activeTab === "tab3" ? "active" : ""
+            }`}
+            onClick={() => setActiveTab("tab3")}
+          >
+            Sun
+          </button>
         </div>
       </div>
       <div
