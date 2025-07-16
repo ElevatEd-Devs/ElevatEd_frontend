@@ -25,9 +25,6 @@ const Home = () => {
         <Card />
         <Card />
         <Card />
-        <WeeklyEventCard />
-        <AccordionContainer />
-        <GradeSnapshot />
       </div>
       <div id="event-container" className="">
         <Events /> {/* Events  and To do */}
