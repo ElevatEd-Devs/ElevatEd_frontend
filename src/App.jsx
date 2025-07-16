@@ -1,15 +1,16 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import Header from "./components/Header.jsx";
-import Footer from "./components/Footer.jsx";
+import CourseDashboard from "./pages/CoursePage.jsx";
 import "./index.css";
 
 function App() {
   return (
-    <div className="main-page-container">
-      <Header></Header>
-      <Home></Home>
-      <Footer></Footer>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/"element={<Home/>}/>
+        <Route path="/CoursePage" element={<CourseDashboard/>}/>
+      </Routes>
+    </Router>
   );
 }
 

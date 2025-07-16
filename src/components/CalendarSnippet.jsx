@@ -3,7 +3,7 @@ import React from "react";
 export default function CalendarSnippet() {
   return (
     <div>
-      <div className="w-80 flex flex-col bg-white border border-gray-200 shadow-lg rounded-xl overflow-hidden">
+      <div className="w-70 flex flex-col bg-white border border-gray-200 shadow-lg rounded-xl overflow-hidden mb-4">
         {/* <!-- Calendar --> */}
         <div className="p-3 space-y-0.5">
           {/* <!-- Months --> */}
