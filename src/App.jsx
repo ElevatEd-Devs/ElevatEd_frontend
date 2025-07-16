@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Home from "./pages/Home.jsx";
+import CoursePage from "./pages/CoursePage.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import Sidebar from "./components/Sidebar.jsx";
@@ -7,6 +8,18 @@ import "./index.css";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
+  const [currentView, setCurrentView] = useState('home');
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
+  const handleViewCourse = (courseData) => {
+    setSelectedCourse(courseData);
+    setCurrentView('course');
+  };
+
+  const handleBackToHome = () => {
+    setCurrentView('home');
+    setSelectedCourse(null);
+  };
 
   return (
     <div className="main-page-container">
@@ -19,7 +32,11 @@ function App() {
         {/* Main Content Area */}
         <div className="main-content-area flex-1">
           <Header />
-          <Home />
+          {currentView === 'home' ? (
+            <Home onViewCourse={handleViewCourse} />
+          ) : (
+            <CoursePage courseData={selectedCourse} onBackToHome={handleBackToHome} />
+          )}
           <Footer />
         </div>
       </div>
