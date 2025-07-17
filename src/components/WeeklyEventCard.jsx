@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import WeeklyEventProgressBar from "./WeeklyEventProgressBar";
 import WeeklyEventTab from "./WeeklyEventTab";
-import { map } from "jquery";
+// import { map } from "jquery";
 import WeeklyEventTabContent from "./WeeklyEventTabContent";
 
 export default function WeeklyEventCard() {
