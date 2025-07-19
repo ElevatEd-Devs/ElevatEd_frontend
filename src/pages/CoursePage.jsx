@@ -4,6 +4,7 @@ import { BookOpen, Triangle} from 'lucide-react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import CalendarSnippet from '../components/CalendarSnippet';
+import GradeGauge from '../components/GradeGauge';
 
 export default function CourseDashboard() {
   const [selectedCourse, setSelectedCourse] = useState('Introduction to Psychology');
@@ -19,13 +20,17 @@ export default function CourseDashboard() {
     { name: 'Blank Course', icon: Triangle, color: 'text-yellow-500' },
   ];
 
-  const grades = [
-    { subject: 'Introduction to Psychology', grade: 'A', points: '0-2' },
-    { subject: 'Calculus I', grade: 'A', points: '' },
-    { subject: '', grade: 'B+', points: '200', status: 'success' },
-    { subject: '', grade: 'B1', points: '200', status: 'warning' },
-    { subject: '', grade: 'B+', points: 'C', status: 'success' },
+  // Course-specific assignments and grades
+  const courseAssignments = [
+    { name: 'Midterm Exam', type: 'Exam', percentage: 92, points: '92/100', weight: '25%' },
+    { name: 'Research Paper', type: 'Assignment', percentage: 88, points: '88/100', weight: '20%' },
+    { name: 'Quiz 1', type: 'Quiz', percentage: 95, points: '19/20', weight: '10%' },
+    { name: 'Quiz 2', type: 'Quiz', percentage: 85, points: '17/20', weight: '10%' },
+    { name: 'Participation', type: 'Participation', percentage: 90, points: '90/100', weight: '15%' },
   ];
+
+  // Calculate overall grade for the course
+  const overallGrade = 87;
 
   const calendarEvents = [
     {
@@ -104,45 +109,33 @@ export default function CourseDashboard() {
                 <div className="mb-6">
                   <h2 className="text-xl font-semibold mb-4">{selectedCourse}</h2>
                   
-                  {/* Grades Section */}
-                  <div className="grid grid-cols-4 gap-4 mb-6">
-                    {[1, 2, 3, 4].map((col) => (
-                      <div key={col} className="text-center">
-                        <div className="text-sm text-gray-500 mb-2">Grades</div>
-                        <div className="space-y-1">
-                          {col === 1 && (
-                            <>
-                              <div className="text-lg font-medium">A</div>
-                              <div className="text-sm text-gray-500">0-2</div>
-                            </>
-                          )}
-                          {col === 2 && (
-                            <>
-                              <div className="flex items-center justify-center space-x-1">
-                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                                <span className="text-lg font-medium">B+</span>
-                              </div>
-                              <div className="text-sm text-gray-500">200</div>
-                            </>
-                          )}
-                          {col === 3 && (
-                            <>
-                              <div className="flex items-center justify-center space-x-1">
-                                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                                <span className="text-lg font-medium">B1</span>
-                              </div>
-                              <div className="text-sm text-gray-500">200</div>
-                            </>
-                          )}
-                          {col === 4 && (
-                            <>
-                              <div className="text-lg font-medium">B+</div>
-                              <div className="text-sm text-gray-500">C</div>
-                            </>
-                          )}
-                        </div>
+                  {/* Grades Section with Gauge */}
+                  <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
+                    <h3 className="text-lg font-medium mb-4">Grade Overview</h3>
+                    
+                    {/* Overall Grade Gauge */}
+                    <div className="flex items-center justify-center mb-6">
+                      <div className="text-center">
+                        <GradeGauge percentage={overallGrade} size={120} strokeWidth={10} />
+                        <p className="text-sm text-gray-600 mt-2">Overall Grade</p>
+                        <p className="text-lg font-bold text-gray-800">B+</p>
                       </div>
-                    ))}
+                    </div>
+                    
+                    {/* Assignment Breakdown */}
+                    <div className="grid grid-cols-3 gap-4">
+                      {courseAssignments.map((assignment, index) => (
+                        <div key={index} className="bg-gray-50 rounded-lg p-4 text-center">
+                          <div className="mb-2">
+                            <GradeGauge percentage={assignment.percentage} size={80} strokeWidth={6} />
+                          </div>
+                          <div className="text-sm font-medium text-gray-900">{assignment.name}</div>
+                          <div className="text-xs text-gray-500 mb-1">{assignment.type}</div>
+                          <div className="text-sm font-bold text-gray-800">{assignment.points}</div>
+                          <div className="text-xs text-blue-600">{assignment.weight}</div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
