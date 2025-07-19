@@ -109,10 +109,6 @@ const CoursePage = ({ courseData, onBackToHome }) => {
                 <span className="text-gray-600">Attendance</span>
                 <span className="font-medium">95%</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Class Rank</span>
-                <span className="font-medium">3rd</span>
-              </div>
             </div>
           </div>
 
