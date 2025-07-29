@@ -72,6 +72,66 @@ const LAYOUT_TEMPLATES = {
   ],
 };
 
+const WidgetAdapter = ({ widgetId, isEditMode, onRemove, onConfigChange }) => {
+  const [showSettings, setShowSettings] = useState(false);
+
+  // Get widget configuration
+  const widgetConfig = AVAILABLE_WIDGETS[widgetId];
+  const WidgetComponent = widgetConfig?.Component;
+
+  if (!WidgetComponent) {
+    return <div className="p-4">Widget not found</div>;
+  }
+
+  // In edit mode, wrap with controls
+  if (isEditMode) {
+    return (
+      <div className="relative h-full">
+        {/* Edit controls - only in edit mode */}
+        <div className="absolute top-2 right-2 z-10 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+          <button
+            onClick={() => setShowSettings(true)}
+            className="p-1 bg-blue-500 text-white rounded-full shadow-lg"
+            aria-label="Settings"
+          >
+            ⚙️
+          </button>
+          <button
+            onClick={() => onRemove(widgetId)}
+            className="p-1 bg-red-500 text-white rounded-full shadow-lg"
+            aria-label="Remove"
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* The actual widget component */}
+        <WidgetComponent />
+
+        {/* Settings modal (you can implement this later) */}
+        {showSettings && (
+          <div className="absolute inset-0 bg-white bg-opacity-90 flex items-center justify-center z-20">
+            <div className="bg-white p-4 rounded-lg shadow-lg">
+              <h4 className="font-bold mb-2">
+                Settings for {widgetConfig.label}
+              </h4>
+              <button
+                onClick={() => setShowSettings(false)}
+                className="px-3 py-1 bg-gray-500 text-white rounded"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // In view mode, render component directly
+  return <WidgetComponent />;
+};
+
 // --- Main Component ---
 
 export default function CourseLayoutEditor() {
@@ -130,7 +190,7 @@ export default function CourseLayoutEditor() {
     <div className="bg-gray-50 min-h-screen p-4 sm:p-6 lg:p-8 font-sans">
       <div className="max-w-7xl mx-auto">
         {/* --- Header and Controls --- */}
-        <div className="bg-white shadow-md rounded-xl p-4 mb-6">
+        <div className="EditorMenu bg-white shadow-md rounded-xl p-4 mb-6">
           <div className="flex flex-wrap justify-between items-center gap-4">
             <h1 className="text-2xl font-bold text-gray-800">Course Editor</h1>
             <button
@@ -199,43 +259,23 @@ export default function CourseLayoutEditor() {
           preventCollision={true}
           compactType="vertical"
         >
-          {currentLayout.map((item) => {
-            const WidgetComponent = AVAILABLE_WIDGETS[item.i]?.Component;
-            return (
-              <div
-                key={item.i}
-                className="relative group bg-white rounded-xl shadow-sm overflow-hidden"
-              >
-                {WidgetComponent ? (
-                  <WidgetComponent />
-                ) : (
-                  <div className="p-4">Widget not found</div>
-                )}
-                {isEditing && (
-                  <button
-                    onClick={() => handleRemoveWidget(item.i)}
-                    className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-red-500"
-                    aria-label={`Remove ${AVAILABLE_WIDGETS[item.i]?.label}`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-                )}
-              </div>
-            );
-          })}
+          {/* {currentLayout.map((item) => (
+            <div
+              key={item.i}
+              className="relative group bg-white rounded-xl shadow-sm overflow-hidden"
+            >
+              <WidgetAdapter
+                widgetId={item.i}
+                isEditMode={isEditing}
+                onRemove={handleRemoveWidget}
+                onConfigChange={(widgetId, newConfig) => {
+                  // Handle widget configuration changes
+                  console.log("Config changed for", widgetId, newConfig);
+                }}
+              />
+            </div>
+          ))}
+          ; */}
         </ResponsiveGridLayout>
       </div>
     </div>
