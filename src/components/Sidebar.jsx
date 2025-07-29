@@ -4,7 +4,7 @@ const Sidebar = ({showSidebar, setShowSidebar}) => {
   return (
     <div >
       {/* // <!-- Navigation Toggle --> */}
-      <div className={showSidebar ? "hidden" : "lg py-16 text-center"} >
+      <div  >
         <button
           type="button"
           className="py-2 px-3 inline-flex justify-center items-center gap-x-2 text-start bg-gray-800 border border-gray-800 text-white text-sm font-medium rounded-lg shadow-2xs align-middle hover:bg-gray-950 focus:outline-hidden focus:bg-gray-900 dark:bg-white dark:text-neutral-800 dark:hover:bg-neutral-200 dark:focus:bg-neutral-200"
