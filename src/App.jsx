@@ -5,16 +5,16 @@ import "./index.css";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
-  const [currentView, setCurrentView] = useState('home');
+  const [currentView, setCurrentView] = useState("home");
   const [selectedCourse, setSelectedCourse] = useState(null);
 
   const handleViewCourse = (courseData) => {
     setSelectedCourse(courseData);
-    setCurrentView('course');
+    setCurrentView("course");
   };
 
   const handleBackToHome = () => {
-    setCurrentView('home');
+    setCurrentView("home");
     setSelectedCourse(null);
   };
 
@@ -25,9 +25,14 @@ function App() {
         <div className="sidebar-container">
           <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
         </div>
-        
+
         {/* Main Content Area */}
-        <Home currentView={currentView} handleViewCourse={handleViewCourse} selectedCourse={selectedCourse} handleBackToHome={handleBackToHome} />
+        <Home
+          currentView={currentView}
+          handleViewCourse={handleViewCourse}
+          selectedCourse={selectedCourse}
+          handleBackToHome={handleBackToHome}
+        />
       </div>
     </div>
   );

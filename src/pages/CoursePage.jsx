@@ -1,5 +1,5 @@
-import React from 'react';
-import GradeGauge from '../components/GradeGauge.jsx';
+import React from "react";
+import GradeGauge from "../components/GradeGauge.jsx";
 
 const CoursePage = ({ courseData, onBackToHome }) => {
   return (
@@ -7,7 +7,7 @@ const CoursePage = ({ courseData, onBackToHome }) => {
       {/* Header */}
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <button 
+          <button
             onClick={onBackToHome}
             className="mb-2 text-blue-600 hover:text-blue-800 flex items-center"
           >
@@ -45,16 +45,25 @@ const CoursePage = ({ courseData, onBackToHome }) => {
                 { category: "Assignments", grade: 85, weight: "40%" },
                 { category: "Quizzes", grade: 92, weight: "30%" },
                 { category: "Midterm Exam", grade: 78, weight: "15%" },
-                { category: "Final Project", grade: 95, weight: "15%" }
+                { category: "Final Project", grade: 95, weight: "15%" },
               ].map((item, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded">
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-3 bg-gray-50 rounded"
+                >
                   <div className="flex items-center space-x-4">
                     <div className="w-16 h-16">
-                      <GradeGauge percentage={item.grade} size={60} strokeWidth={4} />
+                      <GradeGauge
+                        percentage={item.grade}
+                        size={60}
+                        strokeWidth={4}
+                      />
                     </div>
                     <div>
                       <h3 className="font-medium">{item.category}</h3>
-                      <p className="text-sm text-gray-600">Weight: {item.weight}</p>
+                      <p className="text-sm text-gray-600">
+                        Weight: {item.weight}
+                      </p>
                     </div>
                   </div>
                   <div className="text-right">
@@ -70,24 +79,50 @@ const CoursePage = ({ courseData, onBackToHome }) => {
             <h2 className="text-xl font-semibold mb-4">Recent Assignments</h2>
             <div className="space-y-3">
               {[
-                { name: "Essay on Machine Learning", due: "Dec 15", status: "Submitted", grade: "92%" },
-                { name: "Data Analysis Project", due: "Dec 20", status: "In Progress", grade: "—" },
-                { name: "Final Presentation", due: "Dec 22", status: "Not Started", grade: "—" }
+                {
+                  name: "Essay on Machine Learning",
+                  due: "Dec 15",
+                  status: "Submitted",
+                  grade: "92%",
+                },
+                {
+                  name: "Data Analysis Project",
+                  due: "Dec 20",
+                  status: "In Progress",
+                  grade: "—",
+                },
+                {
+                  name: "Final Presentation",
+                  due: "Dec 22",
+                  status: "Not Started",
+                  grade: "—",
+                },
               ].map((assignment, index) => (
-                <div key={index} className="flex items-center justify-between p-3 border rounded hover:bg-gray-50">
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-3 border rounded hover:bg-gray-50"
+                >
                   <div>
                     <h3 className="font-medium">{assignment.name}</h3>
-                    <p className="text-sm text-gray-600">Due: {assignment.due}</p>
+                    <p className="text-sm text-gray-600">
+                      Due: {assignment.due}
+                    </p>
                   </div>
                   <div className="text-right">
-                    <span className={`px-2 py-1 rounded text-xs ${
-                      assignment.status === 'Submitted' ? 'bg-green-100 text-green-800' :
-                      assignment.status === 'In Progress' ? 'bg-yellow-100 text-yellow-800' :
-                      'bg-gray-100 text-gray-800'
-                    }`}>
+                    <span
+                      className={`px-2 py-1 rounded text-xs ${
+                        assignment.status === "Submitted"
+                          ? "bg-green-100 text-green-800"
+                          : assignment.status === "In Progress"
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-gray-100 text-gray-800"
+                      }`}
+                    >
                       {assignment.status}
                     </span>
-                    <p className="text-sm font-medium mt-1">{assignment.grade}</p>
+                    <p className="text-sm font-medium mt-1">
+                      {assignment.grade}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -118,12 +153,18 @@ const CoursePage = ({ courseData, onBackToHome }) => {
             <div className="space-y-3">
               {[
                 { event: "Final Exam", date: "Dec 18", time: "10:00 AM" },
-                { event: "Project Presentation", date: "Dec 22", time: "2:00 PM" },
-                { event: "Course Feedback", date: "Dec 25", time: "All Day" }
+                {
+                  event: "Project Presentation",
+                  date: "Dec 22",
+                  time: "2:00 PM",
+                },
+                { event: "Course Feedback", date: "Dec 25", time: "All Day" },
               ].map((item, index) => (
                 <div key={index} className="border-l-4 border-blue-500 pl-3">
                   <h3 className="font-medium text-sm">{item.event}</h3>
-                  <p className="text-xs text-gray-600">{item.date} at {item.time}</p>
+                  <p className="text-xs text-gray-600">
+                    {item.date} at {item.time}
+                  </p>
                 </div>
               ))}
             </div>
@@ -138,9 +179,13 @@ const CoursePage = ({ courseData, onBackToHome }) => {
                 "Lecture Notes",
                 "Assignments",
                 "Reading List",
-                "Discussion Forum"
+                "Discussion Forum",
               ].map((resource, index) => (
-                <a key={index} href="#" className="block text-blue-600 hover:text-blue-800 text-sm">
+                <a
+                  key={index}
+                  href="#"
+                  className="block text-blue-600 hover:text-blue-800 text-sm"
+                >
                   {resource} →
                 </a>
               ))}
