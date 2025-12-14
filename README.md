@@ -201,7 +201,7 @@ Special thanks to all contributors and the student community for supporting this
 
 <div align="center">
   
-  **Built with ❤️ by students, for students**
+  **Built by students, for students**
   
   [Report Bug](https://github.com/ElevatEd-Devs/ElevatEd_frontend/issues) · [Request Feature](https://github.com/ElevatEd-Devs/ElevatEd_frontend/issues)
 
